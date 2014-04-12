@@ -45,3 +45,5 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#gem "koala", "~> 1.8.0rc1"
+
