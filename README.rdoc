@@ -4,12 +4,12 @@ GET /users
 
 	Returns a JSON list of all users
 
-GET /users/new?fb_id=X&app_id=Y&name=Z&email=A&lang=B
+POST /users/new?fb_id=X&app_id=Y&name=Z&email=A&lang=B
 
 	Creates a new user (if the fb_id is unique)
 	Returns nothing
 
-GET /notifications/new?app_id=X&link=Y&message=Z
+POST /notifications/new?app_id=X&link=Y&message=Z
 
 	Posts a new notication to Facebook
 	Returns nothing
