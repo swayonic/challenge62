@@ -41,6 +41,7 @@ class UsersController < ApplicationController
 			ua.fb_app_id = a.id
 			if !ua.save
 				render :text => 'An error occurred while creating the user-app relation'
+				return
 			end
 		end
 
