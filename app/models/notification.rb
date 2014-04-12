@@ -1,5 +1,5 @@
 class Notification < ActiveRecord::Base
-	belongs_to :app
+	belongs_to :fb_app
 
-	attr_accessor :app_id, :reference
+	attr_accessor :fb_app_id, :reference
 end
