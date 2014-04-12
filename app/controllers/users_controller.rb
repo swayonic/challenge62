@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 	def create
 		# Step 1: Create User
 
-		if !u = User.find_by(fb_id: params[:fb_id])
+		u = User.find_by(fb_id: params[:fb_id])
+		if u.nil?
 			u = User.new
 			u.fb_id = params[:fb_id]
 			u.name = params[:name]
@@ -21,7 +22,8 @@ class UsersController < ApplicationController
 
 		# Step 2: Create App
 
-		if !a = FbApp.find_by(facebook_id: params[:app_id])
+		a = FbApp.find_by(facebook_id: params[:app_id])
+		if a.nil?
 			a = FbApp.new
 			a.facebook_id = params[:app_id]
 			if !a.save
@@ -32,10 +34,11 @@ class UsersController < ApplicationController
 
 		# Step 3: Create UserApp
 
-		if !ua = UserApp.find_by(user_id: u.id, app_id: a.id)
+		ua = UserApp.find_by(user_id: u.id, fb_app_id: a.id)
+		if ua.nil?
 			ua = UserApp.new
 			ua.user_id = u.id
-			ua.app_id = a.id
+			ua.fb_app_id = a.id
 			if !ua.save
 				render :text => 'An error occurred while creating the user-app relation'
 			end

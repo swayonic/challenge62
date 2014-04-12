@@ -13,14 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20140412044159) do
 
-  create_table "apps", force: true do |t|
-    t.integer  "fb_id"
+  create_table "fb_apps", force: true do |t|
+    t.string   "facebook_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "notifications", force: true do |t|
-    t.integer  "app_id"
+    t.string   "fb_app_id"
     t.text     "reference"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140412044159) do
 
   create_table "user_apps", force: true do |t|
     t.integer  "user_id"
-    t.integer  "app_id"
+    t.string   "fb_app_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
