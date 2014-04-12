@@ -1,28 +1,15 @@
-== README
+== Challenge62
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+GET /users
 
-Things you may want to cover:
+	Returns a JSON list of all users
 
-* Ruby version
+GET /users/new?fb_id=X&app_id=Y
 
-* System dependencies
+	Creates a new user (if the fb_id is unique)
+	Returns nothing
 
-* Configuration
+GET /notifications/new?app_id=X&link=Y&message=Z
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+	Posts a new notication to Facebook
+	Returns nothing
