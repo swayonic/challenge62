@@ -21,9 +21,9 @@ class UsersController < ApplicationController
 
 		# Step 2: Create App
 
-		if !a = App.find_by(fb_id: params[:app_id])
-			a = App.new
-			a.fb_id = params[:app_id]
+		if !a = FbApp.find_by(facebook_id: params[:app_id])
+			a = FbApp.new
+			a.facebook_id = params[:app_id]
 			if !a.save
 				render :text => 'An error occurred while creating the app.'
 				return
