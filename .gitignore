@@ -29,7 +29,6 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
-config/secrets.yml
 
 ## Environment normalisation:
 /.bundle
