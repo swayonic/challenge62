@@ -4,12 +4,22 @@ GET /users
 
 	Returns a JSON list of all users
 
-POST /users/new?fb_id=X&app_id=Y&name=Z&email=A&lang=B
+POST /users
+ fb_id=X
+ app_id=X
+ name=X
+ email=X
+ lang=X
 
 	Creates a new user (if the fb_id is unique)
-	Returns nothing
+	Creates a new app (if it doesn't exist already)
+	Creates a new user_app relationship (links the user to the app)
+	Returns a string telling you what happened
 
-POST /notifications/new?app_id=X&link=Y&message=Z
+POST /notifications
+ app_id=X
+ link=X
+ message=X
 
 	Posts a new notication to Facebook
 	Returns nothing
