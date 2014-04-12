@@ -1,6 +1,6 @@
 class UserApp < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :app
+	belongs_to :fb_app
 
-	attr_accessor :user_id, :app_id
+	attr_accessor :user_id, :fb_app_id
 end
