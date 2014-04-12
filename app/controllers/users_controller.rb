@@ -1,26 +1,42 @@
 class UsersController < ApplicationController
 
 	def index
+		render json: User.all
 	end
 
-	def new
-		if !u = User.find_by_fb_id(params[:fb_id])
+	def create
+		# Step 1: Create User
+
+		if !u = User.find_by(fb_id: params[:fb_id])
 			u = User.new
 			u.fb_id = params[:fb_id]
 			u.name = params[:name]
 			u.email = params[:email]
-			u.lang = params[:lang]
+			u.locale = params[:lang]
 			if !u.save
 				render :text => 'An error occurred while creating the user.'
 				return
 			end
 		end
 
-		if !au = AppUser.find_by_user_id_and_app_id(u.id, params[:app_id])
-			au = AppUser.new
-			au.user_id = u.id
-			au.app_id = params[:app_id]
-			if !au.save
+		# Step 2: Create App
+
+		if !a = App.find_by(fb_id: params[:app_id])
+			a = App.new
+			a.fb_id = params[:app_id]
+			if !a.save
+				render :text => 'An error occurred while creating the app.'
+				return
+			end
+		end
+
+		# Step 3: Create UserApp
+
+		if !ua = UserApp.find_by(user_id: u.id, app_id: a.id)
+			ua = UserApp.new
+			ua.user_id = u.id
+			ua.app_id = a.id
+			if !ua.save
 				render :text => 'An error occurred while creating the user-app relation'
 			end
 		end
