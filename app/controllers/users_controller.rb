@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
 
+	# GET /users
+	# Returns a JSON list of all users
 	def index
 		render json: User.all
 	end
 
+	# POST /users
+	# Creates a user (and anything else needed) from the given params
 	def create
 		# Step 1: Create User
 
